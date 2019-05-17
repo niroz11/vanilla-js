@@ -5,15 +5,24 @@ var cardSection = document.querySelector('.card-section')
 
 
 button.addEventListener('click', () => {
-	createCard(event)
+  event.preventDefault()
+	createIdea(event)
 })
 
-createCard = (event) => {
+createIdea = (event) => {
+  var title = titleInput.value
+  var body = bodyInput.value
+  var idea = new Idea(title,body)
+  createCard(idea)
+  console.log(idea, "idea created")
+}
+
+createCard = (idea) => {
 	event.preventDefault()
 	var card =
     `<div class="card-display">
-      <h2>title</h2>
-      <p>this is a card body</p>
+      <h2>${idea.title}</h2>
+      <p>${idea.body}</p>
       <div class="card-button">
         <button class="up-vote btn">up</button>
         <button class="down-vote btn">Down</button>
