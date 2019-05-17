@@ -5,11 +5,25 @@ const cardSection = document.querySelector('.card-section')
 const ideasArray = []
 
 
-button.addEventListener('click', () => {
+button.addEventListener('click', (event) => {
   event.preventDefault()
 	createIdea(event)
 })
 
+window.onload = () => {
+  alert("heyyy")
+  if (localStorage.getItem('ideas') !== null) {
+    ideas = JSON.parse(localStorage.getItem('ideas'));
+    ideas = ideas.map((idea) => {
+      return new Idea(idea.title, idea.body, idea.quality, idea.id);
+      
+    });
+    ideas.forEach((idea) => {
+      createCard(idea);
+    })
+    
+  };
+};
 
 
 createIdea = (event) => {
@@ -18,15 +32,16 @@ createIdea = (event) => {
   const idea = new Idea(title,body)
   console.log(idea)
   ideasArray.push(idea)
+  
   createCard(idea)
   titleInput.value = '';
   bodyInput.value = '';
-  idea.saveToStorage()
+  idea.saveToStorage(ideasArray)
   
 }
 
 createCard = (idea) => {
-	event.preventDefault()
+	// event.preventDefault()
 	var card =
     `<div class="card-display">
       <h2>${idea.title}</h2>

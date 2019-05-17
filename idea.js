@@ -10,8 +10,8 @@ class Idea {
 
 	}
 
-	saveToStorage = () => {
-		localStorage.setItem("ideas",JSON.stringify(ideas));
+	saveToStorage = (idea) => {
+		localStorage.setItem("ideas",JSON.stringify(idea));
 	}
 
 	
