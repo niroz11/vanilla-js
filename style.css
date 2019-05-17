@@ -1,0 +1,22 @@
+.header{
+	width:100%;
+	height:100px;
+	background-color: #B2B2B2;
+}
+
+.input-section{
+	width:100%;
+	background-color: pink;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.input-form{
+	display: flex;
+	flex-direction: column;
+}
+
+.input-form input{
+	margin-bottom: 10px;
+}
