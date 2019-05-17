@@ -1,7 +1,8 @@
-var button = document.querySelector('.submit-btn');
-var titleInput = document.querySelector('.title-input');
-var bodyInput = document.querySelector('.body-input');
-var cardSection = document.querySelector('.card-section')
+const button = document.querySelector('.submit-btn');
+const titleInput = document.querySelector('.title-input');
+const bodyInput = document.querySelector('.body-input');
+const cardSection = document.querySelector('.card-section')
+const ideasArray = []
 
 
 button.addEventListener('click', () => {
@@ -9,12 +10,19 @@ button.addEventListener('click', () => {
 	createIdea(event)
 })
 
+
+
 createIdea = (event) => {
-  var title = titleInput.value
-  var body = bodyInput.value
-  var idea = new Idea(title,body)
+  const title = titleInput.value
+  const body = bodyInput.value
+  const idea = new Idea(title,body)
+  console.log(idea)
+  ideasArray.push(idea)
   createCard(idea)
-  console.log(idea, "idea created")
+  titleInput.value = '';
+  bodyInput.value = '';
+  idea.saveToStorage()
+  
 }
 
 createCard = (idea) => {
